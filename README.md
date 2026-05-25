@@ -1,5 +1,21 @@
 # Cloud Native GitOps Platform
 # Deployment Screenshots
+
+## Kubernetes Pods
+
+![Kubernetes Pods](screenshots/pods.png)
+
+---
+
+## Kubernetes Ingress
+
+![Kubernetes Ingress](screenshots/ingress.png)
+
+---
+
+## Running Application
+
+![Running App](screenshots/browser.png)
 A production-style cloud-native platform built with Kubernetes, Docker, GitHub Actions, and GitOps principles.
 
 This project demonstrates a real-world DevOps workflow for deploying and managing containerized applications on a Kubernetes cluster using modern cloud-native tooling.
