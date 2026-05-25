@@ -1,5 +1,5 @@
 # Cloud Native GitOps Platform
-# screenshots
+# Deployment Screenshots
 A production-style cloud-native platform built with Kubernetes, Docker, GitHub Actions, and GitOps principles.
 
 This project demonstrates a real-world DevOps workflow for deploying and managing containerized applications on a Kubernetes cluster using modern cloud-native tooling.
