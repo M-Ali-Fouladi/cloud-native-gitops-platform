@@ -32,4 +32,4 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker push ghcr.io/${{ github.repository }}/cloud-api:latest
+          docker push ghcr.io/m-ali-fouladi/cloud-api:latest
