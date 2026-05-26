@@ -27,7 +27,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build \
-          -t ghcr.io/${{ github.repository }}/cloud-api:latest \
+          -t ghcr.io/m-ali-fouladi/cloud-api:latest \
           -f docker/Dockerfile .
 
       - name: Push Docker image
