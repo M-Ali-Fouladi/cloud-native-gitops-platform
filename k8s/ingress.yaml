@@ -8,16 +8,12 @@ spec:
   ingressClassName: nginx
 
   rules:
-  - host: api.yourdomain.com
-
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-
-        backend:
-          service:
-            name: fastapi-service
-
-            port:
-              number: 80
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: fastapi-service
+                port:
+                  number: 80

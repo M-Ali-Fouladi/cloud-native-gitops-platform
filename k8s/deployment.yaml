@@ -19,9 +19,8 @@ spec:
     spec:
       containers:
       - name: fastapi-app
-
         image: cloud-api
-
+        imagePullPolicy: Never  
         ports:
         - containerPort: 8000
 
