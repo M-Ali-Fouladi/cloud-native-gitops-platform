@@ -27,9 +27,13 @@ jobs:
       - name: Build Docker image
         run: |
           docker build \
-          -t ghcr.io/m-ali-fouladi/cloud-api:latest \
+          -t ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }} \
           -f docker/Dockerfile .
 
       - name: Push Docker image
         run: |
-          docker push ghcr.io/m-ali-fouladi/cloud-api:latest
+          docker push ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }}
+
+      - name: Update image tag
+        run: |
+          sed -i "s|image: .*|image: ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }}|" deployment.yaml    
