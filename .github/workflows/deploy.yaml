@@ -21,18 +21,35 @@ jobs:
 
         with:
           registry: ghcr.io
+<<<<<<< HEAD
           username: M-ALI-FOULADI #${{ github.actor }} 
           password: ${{ secrets.GHCR_TOKEN }}
+=======
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+>>>>>>> 1b47cd9245b6b6131234f1d5904083a4fd79ea6f
 
       - name: Build Docker image
         run: |
           docker build \
+<<<<<<< HEAD
           -t ghcr.io/${{ github.repository }}/cloud-api:${{ github.sha }} \
+=======
+          -t ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }} \
+>>>>>>> 1b47cd9245b6b6131234f1d5904083a4fd79ea6f
           -f docker/Dockerfile .
 
       - name: Push Docker image
         run: |
+<<<<<<< HEAD
           docker push ghcr.io/${{ github.repository }}/cloud-api:${{ github.sha }}
       - name: Update image tag
         run: |
           sed -i "s|image: .*|image: ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }}|" deployment.yaml 
+=======
+          docker push ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }}
+
+      - name: Update image tag
+        run: |
+          sed -i "s|image: .*|image: ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }}|" deployment.yaml    
+>>>>>>> 1b47cd9245b6b6131234f1d5904083a4fd79ea6f
