@@ -16,6 +16,19 @@
 ## Running Application
 
 ![Running App](screenshots/browser.png)
+
+## ArgoCD App Overview before changing pods 
+
+![Running App](screenshots/ArgoCD-App-Overview.png)
+
+## change pods in deployment for testing ArgoCD-autosync 
+
+![Running App](screenshots/change_pods.png)
+
+## ArgoCD App Overview after changing pods 
+
+![Running App](screenshots/ArgoCD-App-Overview_after_change_pods.png)
+
 A production-style cloud-native platform built with Kubernetes, Docker, GitHub Actions, and GitOps principles.
 
 This project demonstrates a real-world DevOps workflow for deploying and managing containerized applications on a Kubernetes cluster using modern cloud-native tooling.
