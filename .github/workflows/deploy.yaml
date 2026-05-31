@@ -30,6 +30,10 @@ jobs:
           docker build \
           -t ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }} \
           -f docker/Dockerfile .
+          
+      - name: Verify GHCR login
+        run: docker info
+      
 
       - name: Push Docker image
         run: |
