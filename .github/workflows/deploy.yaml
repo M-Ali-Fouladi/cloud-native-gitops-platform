@@ -24,7 +24,7 @@ jobs:
           registry: ghcr.io
           username: m-ali-fouladi #${{ github.actor }} 
           password: ${{ secrets.GHCR_TOKEN }}
-
+#
       - name: Build Docker image
         run: |
           docker build \
