@@ -44,7 +44,6 @@ jobs:
         run: |
           sed -i "s|image: .*|image: ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }}|" \
           gitops/apps/fastapi/deployment.yaml
-
       - name: Commit and Push changes
         run: |
           cd gitops
