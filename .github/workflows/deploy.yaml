@@ -9,13 +9,14 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       packages: write
 
     steps:
+      # App repository
       - name: Checkout repository
         uses: actions/checkout@v4
-
+  
       - name: Log in to GHCR
         uses: docker/login-action@v3
 
@@ -33,6 +34,31 @@ jobs:
       - name: Push Docker image
         run: |
           docker push ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }}
+      # GitOps Repository
+      - name: Checkout GitOps Repository
+        uses: actions/checkout@v4
+        with:
+          repository: M-ALI-FOULADI/project1-gitops
+          token: ${{ secrets.GITOPS_TOKEN }}
+          path: gitops
       - name: Update image tag
         run: |
-          sed -i "s|image: .*|image: ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }}|" deployment.yaml 
+          sed -i "s|image: .*|image: ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }}|" \
+          gitops/apps/fastapi/deployment.yaml
+
+      - name: Commit and Push changes
+        run: |
+          cd gitops
+
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git add apps/fastapi/deployment.yaml
+
+          git commit -m "Update cloud-api image to ${{ github.sha }}" || exit 0
+
+          git push origin main
+
+     # - name: Update image tag
+      #  run: |
+       #   sed -i "s|image: .*|image: ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }}|" deployment.yaml 
