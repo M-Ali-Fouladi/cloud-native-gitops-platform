@@ -13,7 +13,11 @@ jobs:
       packages: write
 
     steps:
-      # App repository
+      - name: Debug identity
+        run: |
+          echo "actor = ${{ github.actor }}"
+          echo "repo_owner = ${{ github.repository_owner }}"
+
       - name: Checkout repository
         uses: actions/checkout@v4
   
