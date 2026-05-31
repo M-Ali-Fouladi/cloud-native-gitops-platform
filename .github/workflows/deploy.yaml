@@ -32,7 +32,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build \
-          -t ghcr.io/${{ github.actor }}/cloud-api:${{ github.sha }} \
+          -t ghcr.io/${{ github.actor | lower}}/cloud-api:${{ github.sha }} \
           -f docker/Dockerfile .
           
       - name: Push Docker image
