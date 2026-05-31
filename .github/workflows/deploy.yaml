@@ -27,13 +27,13 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build \
+          sudo docker build \
           -t ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }} \
           -f docker/Dockerfile .
 
       - name: Push Docker image
         run: |
-          docker push ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }}
+          sudo docker push ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }}
       # GitOps Repository
       - name: Checkout GitOps Repository
         uses: actions/checkout@v4
