@@ -13,11 +13,6 @@ jobs:
       packages: write
 
     steps:
-
-      - name: Manual docker login test
-        run: |
-          echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
       - name: Checkout repository
         uses: actions/checkout@v4
   
@@ -53,7 +48,7 @@ jobs:
       - name: Commit and Push changes
         run: |
           cd gitops
-
+#
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
