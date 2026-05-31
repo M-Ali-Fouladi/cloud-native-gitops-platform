@@ -22,28 +22,28 @@ jobs:
 
         with:
           registry: ghcr.io
-          username: m-ali-fouladi #${{ github.actor }} 
+          username: ${{ github.actor }} 
           password: ${{ secrets.GHCR_TOKEN }}
 #
       - name: Build Docker image
         run: |
           docker build \
-          -t ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }} \
+          -t ghcr.io/${{ github.actor }}/cloud-api:${{ github.sha }} \
           -f docker/Dockerfile .
           
       - name: Push Docker image
         run: |
-          docker push ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }}
+          docker push ghcr.io/${{ github.actor }}/cloud-api:${{ github.sha }}
       # GitOps Repository
       - name: Checkout GitOps Repository
         uses: actions/checkout@v4
         with:
-          repository: m-ali-fouladi/project1-gitops
+          repository: M-ALI-FOULADI/project1-gitops
           token: ${{ secrets.GITOPS_TOKEN }}
           path: gitops
       - name: Update image tag
         run: |
-          sed -i "s|image: .*|image: ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }}|" \
+          sed -i "s|image: .*|image: ghcr.io/${{ github.actor }}/cloud-api:${{ github.sha }}|" \
           gitops/apps/fastapi/deployment.yaml
 
       - name: Commit and Push changes
