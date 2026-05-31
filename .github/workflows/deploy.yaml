@@ -24,8 +24,6 @@ jobs:
           registry: ghcr.io
           username: m-ali-fouladi #${{ github.actor }} 
           password: ${{ secrets.GHCR_TOKEN }}
-      - name: Verify GHCR login
-        run: docker info
 #
       - name: Build Docker image
         run: |
@@ -40,7 +38,7 @@ jobs:
       - name: Checkout GitOps Repository
         uses: actions/checkout@v4
         with:
-          repository: M-ALI-FOULADI/project1-gitops
+          repository: m-ali-fouladi/project1-gitops
           token: ${{ secrets.GITOPS_TOKEN }}
           path: gitops
       - name: Update image tag
