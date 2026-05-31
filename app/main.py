@@ -11,7 +11,7 @@ REQUEST_COUNT = Counter(
     "app_requests_total",
     "Total Request Count"
 )
-
+#
 @app.get("/")
 def root():
     REQUEST_COUNT.inc()
