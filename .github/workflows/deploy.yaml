@@ -24,6 +24,8 @@ jobs:
           registry: ghcr.io
           username: m-ali-fouladi #${{ github.actor }} 
           password: ${{ secrets.GHCR_TOKEN }}
+      - name: Verify GHCR login
+        run: docker info
 #
       - name: Build Docker image
         run: |
@@ -31,10 +33,6 @@ jobs:
           -t ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }} \
           -f docker/Dockerfile .
           
-      - name: Verify GHCR login
-        run: docker info
-      
-
       - name: Push Docker image
         run: |
           docker push ghcr.io/m-ali-fouladi/cloud-api:${{ github.sha }}
